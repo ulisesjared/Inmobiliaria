@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmobiliaria Uriangato</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    {% include 'principal/navbar.html' %}
+    <main>
+        <section class="hero">
+            <h2>Encuentra tu hogar ideal</h2>
+            <p>Explora nuestra exclusiva selección de propiedades y haz realidad tu sueño.</p>
+        </section>
+        
+        <section class="propiedades-destacadas">
+            <h2>Propiedades Destacadas</h2>
+            <div class="contenedor-propiedades">
+                <div class="propiedad">
+                    <img src="static/imagenes/propiedad1.webp" alt="Casa moderna en venta">
+                    <h3>Casa moderna en venta</h3>
+                    <p>Ubicada en una zona exclusiva, con acabados de lujo.</p>
+                    <span class="precio">$3,500,000 MXN</span>
+                    <a href="propiedad1.html" class="btn">Ver más</a>
+                </div>
+                <div class="propiedad">
+                    <img src="static/imagenes/propiedad2.jpg" alt="Departamento céntrico">
+                    <h3>Departamento céntrico</h3>
+                    <p>Ideal para inversión, cerca de comercios y transporte público.</p>
+                    <span class="precio">$2,200,000 MXN</span>
+                    <a href="propiedad2.html" class="btn">Ver más</a>
+                </div>
+                <div class="propiedad">
+                    <img src="static/imagenes/propiedad3.jpg" alt="Residencia con alberca">
+                    <h3>Residencia con alberca</h3>
+                    <p>Perfecta para la familia, amplios espacios y seguridad.</p>
+                    <span class="precio">$4,800,000 MXN</span>
+                    <a href="propiedad3.html" class="btn">Ver más</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="amenidades">
+            <h2>AMENIDADES</h2>
+            <p>Disfruta de un entorno placentero sin salir de casa</p>
+            <div class="contenedor-amenidades">
+                <div class="amenidad"><i class="fas fa-shield-alt"></i><span>Acceso Vigilado</span></div>
+                <div class="amenidad"><i class="fas fa-tree"></i><span>Áreas Verdes</span></div>
+                <div class="amenidad"><i class="fas fa-swimming-pool"></i><span>Alberca</span></div>
+                <div class="amenidad"><i class="fas fa-sun"></i><span>Asoleadero</span></div>
+                <div class="amenidad"><i class="fas fa-restroom"></i><span>Baños</span></div>
+                <div class="amenidad"><i class="fas fa-water"></i><span>Chapoteadero</span></div>
+                <div class="amenidad"><i class="fas fa-car"></i><span>Estacionamiento</span></div>
+                <div class="amenidad"><i class="fas fa-gavel"></i><span>Gazebos</span></div>
+                <div class="amenidad"><i class="fas fa-child"></i><span>Juegos Infantiles</span></div>
+                <div class="amenidad"><i class="fas fa-building"></i><span>Salón de usos múltiples</span></div>
+            </div>
+        </section>
+
+        <section class="collage">
+            <div class="grid-collage">
+                <img src="static/imagenes/collage/foto1.jpg" alt="Imagen 1">
+                <img src="static/imagenes/collage/foto2.jpg" alt="Imagen 2">
+                <img src="static/imagenes/collage/foto3.jpg" alt="Imagen 3">
+                <img src="static/imagenes/collage/foto4.jpg" alt="Imagen 4">
+                <img src="static/imagenes/collage/foto5.jpg" alt="Imagen 5">
+                <img src="static/imagenes/collage/foto6.jpg" alt="Imagen 6">
+            </div>
+        </section>
+
+        <section class="ubicacion">
+            <div class="ubicacion-container">
+                <div class="ubicacion-info">
+                    <h2><i class="fas fa-map-marker-alt"></i> Dirección</h2>
+                    <p>Instituto Tecnológico Superior de Uriangato, Uriangato, Guanajuato, México</p>
+                    <a href="https://www.google.com/maps?q=ITSUR+Uriangato+GTO" class="btn-ubicacion">
+                        <i class="fas fa-location-arrow"></i> ¿Cómo llegar?
+                    </a>
+                </div>
+                <div class="ubicacion-mapa">
+                    <iframe src="https://www.google.com/maps?q=ITSUR+Uriangato+GTO&output=embed" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+         <!-- Sección de Contacto -->
+         <section class="contacto">
+            <div class="contacto-contenido">
+                <div class="contacto-texto">
+                    <h2>¿Te gustaría conocer más?</h2>
+                    <p>Contáctanos y con gusto te atenderemos, un asesor se pondrá en contacto contigo.</p>
+                </div>
+                <div class="contacto-info">
+                    <a href="tel:4624757567" class="contacto-item"><i class="fas fa-phone"></i> 462 475 7567</a>
+                    <a href="mailto:contacto@inmobiliariauriangato.com" class="contacto-item"><i class="fas fa-envelope"></i> contacto@inmobiliariauriangato.com</a>
+                    <a href="descargar-book.html" class="contacto-item"><i class="fas fa-download"></i> Descargar Book Digital</a>
+                    <a href="solicitar-info.html" class="contacto-item"><i class="fas fa-info-circle"></i> Solicitar Información</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+
+        <!-- Botón flotante -->
+    <button class="btn-hipoteca" onclick="abrirCalculadora()">
+        💰 Calcula tu Hipoteca
+    </button>
+
+    <!-- Modal de la calculadora -->
+    <div id="modalCalculadora" class="modal-calculadora">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarCalculadora()">&times;</span>
+            <h2>Calculadora de Hipoteca</h2>
+
+            <label for="precio">Precio de la propiedad (MXN):</label>
+            <input type="number" id="precio" placeholder="Ej: 3000000">
+
+            <label for="enganche">Enganche (%):</label>
+            <input type="number" id="enganche" placeholder="Ej: 20">
+
+            <label for="plazo">Plazo (años):</label>
+            <input type="number" id="plazo" placeholder="Ej: 20">
+
+            <label for="interes">Tasa de interés (% anual):</label>
+            <input type="number" id="interes" placeholder="Ej: 9">
+
+            <button class="btn-calcular" onclick="calcularHipoteca()">Calcular</button>
+
+            <div id="resultadoHipoteca"></div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

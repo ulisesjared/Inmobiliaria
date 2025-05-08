@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Propiedad - Inmobiliaria Uriangato</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/agregar_propiedad.css' %}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{% static 'imagenes/logo.png' %}" alt="Inmobiliaria Uriangato">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'propiedades_admin' %}">Gestionar Propiedades</a></li>
+        </ul>
+    </nav>           
+</header>
+
+<main>
+    <section class="formulario-container">
+        <h2>Editar Propiedad</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="titulo">Título de la Propiedad</label>
+                <input type="text" id="titulo" name="titulo" value="{{ propiedad.titulo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required>{{ propiedad.descripcion }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="ubicacion">Ubicación</label>
+                <input type="text" id="ubicacion" name="ubicacion" value="{{ propiedad.ubicacion }}" required>
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" id="precio" name="precio" value="{{ propiedad.precio }}" required>
+            </div>
+            <div class="form-group">
+                <label for="foto_principal">Foto Principal</label>
+                <input type="file" id="foto_principal" name="foto_principal" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn-enviar">Guardar Cambios</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

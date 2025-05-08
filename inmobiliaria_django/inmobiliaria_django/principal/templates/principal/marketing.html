@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing - Inmobiliaria Uriangato</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/marketing.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    {% include 'principal/navbar.html' %}
+
+    <main>
+        <section class="marketing-hero">
+            <h1>Gestión de Marketing</h1>
+            <p>Promociona tus propiedades y llega a más clientes.</p>
+            <button id="btn-abrir-modal" class="btn-agregar">
+                <i class="fas fa-plus"></i> Crear Campaña
+            </button>
+        </section>
+
+        <section class="marketing-campañas">
+            <h2>Campañas Activas</h2>
+            <div class="campañas-grid">
+                <div class="campaña">
+                    <h3>Promoción Primavera</h3>
+                    <p>Descuentos especiales en propiedades de CDMX.</p>
+                    <span class="etiqueta">Email Marketing</span>
+                </div>
+                <div class="campaña">
+                    <h3>Campaña Redes Sociales</h3>
+                    <p>Promoción de propiedades en Instagram y Facebook.</p>
+                    <span class="etiqueta">Redes Sociales</span>
+                </div>
+                <div class="campaña">
+                    <h3>Casa del Mes</h3>
+                    <p>Propiedad destacada con recorrido virtual.</p>
+                    <span class="etiqueta">Propiedad Destacada</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Crear Campaña -->
+    <div id="modal-campaña" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Crear Nueva Campaña</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombre-campaña">Nombre de la campaña:</label>
+                    <input type="text" id="nombre-campaña" placeholder="Ej. Promoción Primavera">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-campaña">Tipo de campaña:</label>
+                    <select id="tipo-campaña">
+                        <option value="">Selecciona una opción</option>
+                        <option value="email">Email Marketing</option>
+                        <option value="redes">Redes Sociales</option>
+                        <option value="destacada">Propiedad Destacada</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagen-campaña">Imagen destacada:</label>
+                    <input type="file" id="imagen-campaña">
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion-campaña">Descripción:</label>
+                    <textarea id="descripcion-campaña" placeholder="Describe los detalles de la campaña"></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Guardar Campaña</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script del Modal -->
+    <script>
+        const modal = document.getElementById("modal-campaña");
+        const btnAbrirModal = document.getElementById("btn-abrir-modal");
+        const btnCerrarModal = document.querySelector(".cerrar-modal");
+
+        btnAbrirModal.addEventListener("click", () => {
+            modal.style.display = "block";
+        });
+
+        btnCerrarModal.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

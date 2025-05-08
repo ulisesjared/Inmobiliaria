@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Documentos</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/documentos.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    {% include 'principal/navbar.html' %}
+
+    <main>
+        <section class="filtros-documentos">
+            <h2>Buscar Documentos</h2>
+            <div class="buscador">
+                <input type="text" placeholder="Buscar por nombre">
+                <select>
+                    <option value="">Tipo de Documento</option>
+                    <option value="contratos">Contratos</option>
+                    <option value="escrituras">Escrituras</option>
+                </select>
+                <select>
+                    <option value="">Localización</option>
+                    <option value="cdmx">Ciudad de México</option>
+                    <option value="guadalajara">Guadalajara</option>
+                    <option value="monterrey">Monterrey</option>
+                </select>
+                <button class="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
+            </div>
+        </section>
+
+        <section class="boton-agregar">
+            <a href="{% url 'subir_documento' %}" class="btn-agregar">
+                <i class="fas fa-plus"></i> Agregar Documento
+            </a>
+        </section>
+
+        <section class="listado-documentos">
+            <h2>Documentos Disponibles</h2>
+            <div class="contenedor-documentos">
+                <div class="documento">
+                    <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
+                    <h3>Contrato de Renta</h3>
+                    <p>Ubicación: Ciudad de México</p>
+                    <p>Tipo: Contrato</p>
+                    <a href="{% static 'documentos/contrato_renta.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
+                </div>
+                <div class="documento">
+                    <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
+                    <h3>Escritura Casa</h3>
+                    <p>Ubicación: Guadalajara</p>
+                    <p>Tipo: Escritura</p>
+                    <a href="{% static 'documentos/escritura_casa.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
+                </div>
+                <div class="documento">
+                    <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
+                    <h3>Contrato de Venta</h3>
+                    <p>Ubicación: Monterrey</p>
+                    <p>Tipo: Contrato</p>
+                    <a href="{% static 'documentos/contrato_venta.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

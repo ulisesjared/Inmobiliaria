@@ -1,0 +1,82 @@
+/* Importar fuentes e íconos */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--dark-bg);
+    min-height: 100vh;
+}
+
+/* Contenedor del listado de clientes */
+.clientes-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.clientes-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.clientes-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--dark-bg);
+}
+
+/* Tabla de clientes */
+.tabla-clientes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-clientes th, 
+.tabla-clientes td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabla-clientes th {
+    background-color: var(--dark-bg);
+    color: var(--white);
+}
+
+/* Botones de acciones */
+.btn-ver, .btn-eliminar {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+}
+
+.btn-ver {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-eliminar {
+    background-color: red;
+    color: var(--white);
+}
+
+.btn-ver:hover {
+    background-color: #357ABD;
+}
+
+.btn-eliminar:hover {
+    background-color: darkred;
+}

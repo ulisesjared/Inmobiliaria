@@ -1,0 +1,670 @@
+/* Importar fuentes e íconos */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Definir colores */
+:root {
+    --primary-color: #4AA1EF;
+    --secondary-color: #0CDDC7;
+    --dark-bg: #131D2A;
+    --text-color: #E2E2E2;
+    --light-bg: #F6F6F6;
+    --white: #FFFFFF;
+}
+
+/* Reset general */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+
+/* Evita el desplazamiento lateral */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Ajusta el contenedor principal */
+main {
+    flex: 1;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Asegura que los elementos no causen desbordamiento */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header */
+header {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fija la navbar */
+    top: 0; /* La deja en la parte superior */
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra para destacar */
+}
+
+body {
+    padding-top: 80px; /* Agrega un espacio en la parte superior para que el contenido no quede oculto debajo de la navbar */
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 25px;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Efecto de reducción al hacer scroll */
+.scrolled {
+    padding: 10px 20px;
+    background-color: rgba(19, 29, 42, 0.9); /* Navbar con transparencia al hacer scroll */
+}
+
+/* Sección Hero */
+.hero {
+    text-align: center;
+    padding: 150px 20px;
+    background: url('../imagenes/hero.jpg') no-repeat center center/cover;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero h2, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 22px;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Sección de Propiedades Destacadas */
+.propiedades-destacadas {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--white);
+    color: var(--dark-bg);
+}
+
+.propiedades-destacadas h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contenedor-propiedades {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.propiedad {
+    background: var(--light-bg);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.propiedad:hover {
+    transform: scale(1.05);
+}
+
+.propiedad img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.propiedad h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.propiedad p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.propiedad .btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.propiedad .btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Sección de Amenidades */
+.amenidades {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.amenidades h2 {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.amenidades p {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+.contenedor-amenidades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.amenidad {
+    text-align: center;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.amenidad i {
+    font-size: 40px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.amenidad span {
+    display: block;
+    font-size: 16px;
+    color: var(--white);
+}
+
+/* Sección de Collage */
+.collage {
+    padding: 50px;
+    background-color: var(--white);
+    text-align: center;
+    margin-bottom: -30px;
+}
+
+.grid-collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.grid-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-collage img:hover {
+    transform: scale(1.1);
+}
+
+/* Sección de Ubicación */
+.ubicacion {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ubicacion-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    width: 100%;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+}
+
+.ubicacion-info {
+    flex: 1;
+    text-align: left;
+    max-width: 400px;
+}
+
+.ubicacion-info h2 {
+    font-size: 24px;
+    color: var(--dark-bg);
+    margin-bottom: 15px;
+}
+
+.ubicacion-info p {
+    font-size: 18px;
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+}
+
+.btn-ubicacion {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-ubicacion i {
+    margin-right: 8px;
+}
+
+.btn-ubicacion:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.ubicacion-mapa {
+    flex: 1;
+    max-width: 600px;
+    margin-left: 20px;
+}
+
+.ubicacion-mapa iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .ubicacion-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .ubicacion-info {
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .ubicacion-mapa {
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Sección de Contacto */
+.contacto {
+    background-color: var(--light-bg);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contacto-contenido {
+    max-width: 800px;
+    margin: auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contacto-texto h2 {
+    font-size: 24px;
+    color: var(--dark-bg);
+    margin-bottom: 10px;
+}
+
+.contacto-texto p {
+    font-size: 18px;
+    color: var(--dark-bg);
+    margin-bottom: 30px;
+}
+
+.contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contacto-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-bg);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 25px;
+    transition: background 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.contacto-item i {
+    margin-right: 10px;
+}
+
+.contacto-item:hover {
+    background: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Asegura que los elementos del menú no tengan márgenes ni padding */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+}
+
+nav ul li {
+    position: relative;
+    margin-right: 25px;
+}
+
+/* Estilos para los enlaces del menú */
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Estilos para el submenú */
+.submenu {
+    position: relative;
+}
+
+/* Dropdown oculto por defecto */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--dark-bg);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    width: 200px;
+}
+
+
+
+/* Mostrar el dropdown cuando se pasa el mouse */
+.submenu:hover .dropdown {
+    display: block;
+}
+
+/* Estilos para los elementos del dropdown */
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown li a {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    color: var(--white);
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.dropdown li a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Modal oculto por defecto */
+.modal-calculadora {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(19, 29, 42, 0.95);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Cuando se muestra el modal */
+.modal-calculadora.mostrar {
+    display: flex;
+    opacity: 1;
+}
+
+/* Contenido del modal */
+.modal-contenido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    color: black;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Cuando el modal se muestra */
+.modal-calculadora.mostrar .modal-contenido {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botón cerrar */
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+}
+
+/* Inputs y labels */
+.modal-contenido label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlideIn 0.5s ease forwards;
+}
+
+.modal-contenido input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlideIn 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* Botón calcular */
+.btn-calcular {
+    background-color: #0CDDC7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlideIn 0.5s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.btn-calcular:hover {
+    background-color: #4AA1EF;
+    transform: scale(1.05);
+}
+
+/* Animación de entrada */
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Resultado del cálculo con animación */
+#resultadoHipoteca {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #0CDDC7;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#resultadoHipoteca.mostrar {
+    opacity: 1;
+}
+
+/* Botón flotante */
+.btn-hipoteca {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #0CDDC7;
+    color: #131D2A;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-hipoteca:hover {
+    background-color: #4AA1EF;
+    transform: scale(1.05);
+}

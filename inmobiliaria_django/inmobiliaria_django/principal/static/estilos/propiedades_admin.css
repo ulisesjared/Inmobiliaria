@@ -1,0 +1,82 @@
+/* Estilos específicos para la página de administración */
+.admin-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.admin-container h2 {
+    color: var(--dark-bg);
+    margin-bottom: 20px;
+}
+
+/* Botón de agregar */
+.btn-agregar {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-agregar:hover {
+    background-color: var(--primary-color);
+}
+
+/* Tabla de propiedades */
+.tabla-propiedades {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-propiedades th, 
+.tabla-propiedades td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabla-propiedades th {
+    background-color: var(--dark-bg);
+    color: var(--white);
+}
+
+/* Botones de acciones */
+.btn-editar, .btn-eliminar {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+}
+
+.btn-editar {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-eliminar {
+    background-color: red;
+    color: var(--white);
+}
+
+.btn-editar:hover {
+    background-color: #357ABD;
+}
+
+.btn-eliminar:hover {
+    background-color: darkred;
+}

@@ -1,0 +1,139 @@
+/* Importar fuentes e íconos */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--dark-bg);
+}
+
+/* Filtros de búsqueda */
+.filtros-documentos {
+    text-align: center;
+    padding: 30px;
+    background: var(--white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtros-documentos h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.buscador {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.buscador input, 
+.buscador select, 
+.buscador button {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-buscar {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-buscar:hover {
+    background: var(--primary-color);
+}
+
+/* Listado de documentos */
+.listado-documentos {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--white);
+    color: var(--dark-bg);
+}
+
+.contenedor-documentos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Card de Documento */
+.documento {
+    width: 250px;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.documento img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.documento h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.documento p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Botón de Descargar */
+.btn-descargar {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-descargar i {
+    margin-right: 5px;
+}
+
+.btn-descargar:hover {
+    background: var(--secondary-color);
+}
+
+/* Botón Agregar Documento */
+.boton-agregar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn-agregar {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-agregar i {
+    margin-right: 8px;
+}
+
+.btn-agregar:hover {
+    background-color: var(--secondary-color);
+}

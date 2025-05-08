@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Propiedad - Inmobiliaria Uriangato</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/agregar_propiedad.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    {% include 'principal/navbar.html' %}
+
+    <main>
+        <section class="formulario-container">
+            <h2>Agregar Nueva Propiedad</h2>
+            <p>Llena los siguientes campos para registrar una nueva propiedad.</p>
+            
+            <form method="POST" enctype="multipart/form-data" onsubmit="return confirmarEnvio();">
+                {% csrf_token %}
+                {% csrf_token %}
+
+<div class="form-group">
+    <label for="foto_principal">Foto Principal</label>
+    <input type="file" id="foto_principal" name="foto_principal" accept="image/*" required>
+</div>
+
+<div class="form-group">
+    <label for="titulo">Título de la Propiedad</label>
+    <input type="text" id="titulo" name="titulo" placeholder="Ejemplo: Casa moderna en zona residencial" required>
+</div>
+
+<div class="form-group">
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe la propiedad..." required></textarea>
+</div>
+
+<div class="form-group">
+    <label for="ubicacion">Ubicación</label>
+    <input type="text" id="ubicacion" name="ubicacion" placeholder="Ejemplo: Ciudad de México, Colonia Roma" required>
+</div>
+
+<div class="form-group">
+    <label for="precio">Precio</label>
+    <input type="number" id="precio" name="precio" placeholder="Ejemplo: 3500000" required>
+</div>
+
+<button type="submit" class="btn-enviar">
+    <i class="fas fa-paper-plane"></i> Guardar Propiedad
+</button>
+
+                
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/validaciones_formulario.js' %}"></script>
+
+</body>
+</html>

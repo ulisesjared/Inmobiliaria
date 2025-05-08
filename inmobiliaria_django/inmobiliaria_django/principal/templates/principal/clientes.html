@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Clientes</title>
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/clientes.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    {% include 'principal/navbar.html' %}
+
+    <main>
+        <section class="clientes-container">
+            <h2>Solicitudes de Contacto</h2>
+            <p>Aquí se muestran todas las peticiones de los clientes.</p>
+
+            <!-- Tabla de clientes -->
+            <table class="tabla-clientes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Mensaje</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>juanperez@email.com</td>
+                        <td>442-123-4567</td>
+                        <td>Estoy interesado en una casa en CDMX.</td>
+                        <td>
+                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>María López</td>
+                        <td>marialopez@email.com</td>
+                        <td>331-456-7890</td>
+                        <td>Quisiera más información sobre terrenos en Guadalajara.</td>
+                        <td>
+                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pedro García</td>
+                        <td>pedrogarcia@email.com</td>
+                        <td>818-555-6677</td>
+                        <td>Estoy buscando un departamento en Monterrey.</td>
+                        <td>
+                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+    
+</body>
+</html>
