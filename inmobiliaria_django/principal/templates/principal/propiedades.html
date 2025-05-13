@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades - Inmobiliaria Uriangato</title>
+    <link rel="stylesheet" href="{% static 'estilos/propiedades.css' %}">
+    <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    {% include 'principal/navbar.html' %}
+
+   <!-- Sección de Filtros -->
+    <section class="buscador-propiedades">
+        <form method="GET" action="{% url 'propiedades_public' %}">
+            <input type="text" name="ubicacion" placeholder="Busca por ubicación" value="{{ request.GET.ubicacion }}">
+            
+            <select name="tipo">
+                <option value="">Compra/Renta</option>
+                <option value="compra" {% if request.GET.tipo == "compra" %}selected{% endif %}>Compra</option>
+                <option value="renta" {% if request.GET.tipo == "renta" %}selected{% endif %}>Renta</option>
+            </select>
+
+            <select name="tipo_inmueble">
+                <option value="">Todos los tipos</option>
+                <option value="casa" {% if request.GET.tipo_inmueble == "casa" %}selected{% endif %}>Casa</option>
+                <option value="departamento" {% if request.GET.tipo_inmueble == "departamento" %}selected{% endif %}>Departamento</option>
+                <option value="terreno" {% if request.GET.tipo_inmueble == "terreno" %}selected{% endif %}>Terreno</option>
+            </select>
+
+            <select name="recamaras">
+                <option value="">Recámaras</option>
+                <option value="1" {% if request.GET.recamaras == "1" %}selected{% endif %}>1+</option>
+                <option value="2" {% if request.GET.recamaras == "2" %}selected{% endif %}>2+</option>
+                <option value="3" {% if request.GET.recamaras == "3" %}selected{% endif %}>3+</option>
+                <option value="4" {% if request.GET.recamaras == "4" %}selected{% endif %}>4+</option>
+            </select>
+
+            <button type="submit" class="btn-buscar">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+        </form>
+    </section>
+
+    <!-- Listado de Propiedades -->
+    <section class="listado-propiedades">
+        <h2>Propiedades Disponibles</h2>
+        <div class="contenedor-propiedades">
+            {% if propiedades %}
+                {% for propiedad in propiedades %}
+                    <div class="propiedad">
+                        <img src="{{ propiedad.foto_principal.url }}" alt="{{ propiedad.titulo }}">
+                        <h3>{{ propiedad.titulo }}</h3>
+                        <p>{{ propiedad.descripcion }}</p>
+                        <span class="precio">${{ propiedad.precio }} MXN</span>
+                        <a href="#" class="btn">Ver más</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay propiedades disponibles por el momento.</p>
+            {% endif %}
+        </div>
+    </section>
+    
+    
+
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
+    </footer>
+
+        <!-- Botón flotante -->
+        <button class="btn-hipoteca" onclick="abrirCalculadora()">
+            💰 Calcula tu Hipoteca
+        </button>
+    
+        <!-- Modal de la calculadora -->
+        <div id="modalCalculadora" class="modal-calculadora">
+            <div class="modal-contenido">
+                <span class="cerrar-modal" onclick="cerrarCalculadora()">&times;</span>
+                <h2>Calculadora de Hipoteca</h2>
+    
+                <label for="precio">Precio de la propiedad (MXN):</label>
+                <input type="number" id="precio" placeholder="Ej: 3000000">
+    
+                <label for="enganche">Enganche (%):</label>
+                <input type="number" id="enganche" placeholder="Ej: 20">
+    
+                <label for="plazo">Plazo (años):</label>
+                <input type="number" id="plazo" placeholder="Ej: 20">
+    
+                <label for="interes">Tasa de interés (% anual):</label>
+                <input type="number" id="interes" placeholder="Ej: 9">
+    
+                <button class="btn-calcular" onclick="calcularHipoteca()">Calcular</button>
+    
+                <div id="resultadoHipoteca"></div>
+            </div>
+        </div>
+    
+        <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

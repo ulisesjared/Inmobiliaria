@@ -1,0 +1,56 @@
+# Entorno virtual
+venv/
+ENV/
+env/
+.venv/
+*.py[cod]
+__pycache__/
+*.so
+
+# Archivos de configuración de entorno
+*.env
+.env.*
+
+# Archivos de base de datos local
+*.sqlite3
+db.sqlite3
+
+# Archivos de logs
+*.log
+
+# Archivos de sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos de migraciones (opcional, si generas en cada entorno)
+**/migrations/*.pyc
+**/migrations/__pycache__/
+**/migrations/*.log
+
+# Archivos de compilación
+/staticfiles/
+/media/
+/build/
+/dist/
+
+# Archivos de Django
+*.mo
+*.pot
+
+# Node (si usas algo de frontend con npm o yarn)
+node_modules/
+npm-debug.log*
+
+# Archivos de coverage o pruebas
+htmlcov/
+.coverage
+.tox/
+.noseids
+.pytest_cache/
+
+# Docker y CI/CD
+*.pid
+*.lock
+docker-compose.override.yml
