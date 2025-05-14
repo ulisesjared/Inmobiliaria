@@ -50,7 +50,7 @@
 
 .tabla-propiedades th {
     background-color: var(--dark-bg);
-    color: var(--white);
+    color: var(--black);
 }
 
 /* Botones de acciones */
