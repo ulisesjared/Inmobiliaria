@@ -25,3 +25,26 @@ class Propiedad(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Contacto(models.Model):
+    OPCIONES_INTERES = [
+        ('compra', 'Compra de propiedad'),
+        ('renta', 'Renta de propiedad'),
+        ('asesoria', 'Asesoría financiera'),
+    ]
+
+    OPCIONES_CONTACTO = [
+        ('telefono', 'Teléfono'),
+        ('correo', 'Correo electrónico'),
+        ('whatsapp', 'WhatsApp'),
+    ]
+
+    nombre = models.CharField(max_length=100)
+    correo_electronico = models.EmailField()
+    telefono = models.CharField(max_length=20)
+    me_interesa = models.CharField(max_length=20, choices=OPCIONES_INTERES)
+    como_contactar = models.CharField(max_length=20, choices=OPCIONES_CONTACTO)
+    comentarios = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.nombre} ({self.correo_electronico})"
