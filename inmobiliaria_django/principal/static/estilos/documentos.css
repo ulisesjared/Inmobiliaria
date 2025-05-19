@@ -137,3 +137,15 @@ body {
 .btn-agregar:hover {
     background-color: var(--secondary-color);
 }
+.btn-limpiar {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.btn-limpiar:hover {
+    background-color: #a71d2a;
+}

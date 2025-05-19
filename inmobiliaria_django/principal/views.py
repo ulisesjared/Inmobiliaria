@@ -186,3 +186,25 @@ def eliminar_contacto(request, contacto_id):
     contacto.delete()
     messages.success(request, 'Contacto eliminado correctamente.')
     return redirect('clientes')  
+
+def documentos(request):
+    nombre = request.GET.get('nombre', '').strip()
+    tipo = request.GET.get('tipo', '')
+    ubicacion = request.GET.get('ubicacion', '')
+
+    documentos = Documento.objects.all()
+
+    if nombre:
+        documentos = documentos.filter(nombre__icontains=nombre)
+    if tipo:
+        documentos = documentos.filter(tipo=tipo)
+    if ubicacion:
+        documentos = documentos.filter(ubicacion=ubicacion)
+
+    context = {
+        'documentos': documentos,
+        'nombre': nombre,
+        'tipo': tipo,
+        'ubicacion': ubicacion,
+    }
+    return render(request, 'principal/documentos.html', context)

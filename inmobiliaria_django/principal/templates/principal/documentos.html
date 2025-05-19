@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar Documentos</title>
+    <title>Documentos Subidos</title>
     <link rel="stylesheet" href="{% static 'estilos/main.css' %}">
     <link rel="stylesheet" href="{% static 'estilos/documentos.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,22 +16,39 @@
     <main>
         <section class="filtros-documentos">
             <h2>Buscar Documentos</h2>
-            <div class="buscador">
-                <input type="text" placeholder="Buscar por nombre">
-                <select>
+            <form method="GET" class="buscador">
+                <input type="text" name="nombre" placeholder="Buscar por nombre" value="{{ nombre }}">
+
+                <select name="tipo">
                     <option value="">Tipo de Documento</option>
-                    <option value="contratos">Contratos</option>
-                    <option value="escrituras">Escrituras</option>
+                    <option value="contrato" {% if tipo == 'contrato' %}selected{% endif %}>Contrato</option>
+                    <option value="escritura" {% if tipo == 'escritura' %}selected{% endif %}>Escritura</option>
                 </select>
-                <select>
+
+                <select name="ubicacion">
                     <option value="">Localización</option>
-                    <option value="cdmx">Ciudad de México</option>
-                    <option value="guadalajara">Guadalajara</option>
-                    <option value="monterrey">Monterrey</option>
+                    <option value="cdmx" {% if ubicacion == 'cdmx' %}selected{% endif %}>Ciudad de México</option>
+                    <option value="guadalajara" {% if ubicacion == 'guadalajara' %}selected{% endif %}>Guadalajara</option>
+                    <option value="monterrey" {% if ubicacion == 'monterrey' %}selected{% endif %}>Monterrey</option>
+                    <option value="queretaro" {% if ubicacion == 'queretaro' %}selected{% endif %}>Querétaro</option>
+                    <option value="puebla" {% if ubicacion == 'puebla' %}selected{% endif %}>Puebla</option>
+                    <option value="otro" {% if ubicacion == 'otro' %}selected{% endif %}>Otra</option>
                 </select>
-                <button class="btn-buscar"><i class="fas fa-search"></i> Buscar</button>
-            </div>
+
+                <button type="submit" class="btn-buscar">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+                <section class="btn-agregar">
+                    <a href="{% url 'documentos' %}"  class="btn-agregar">
+                        <i class="fas fa-times"></i> Limpiar
+                    </a>
+                </section>
+                
+                
+                
+            </form>
         </section>
+
 
         <section class="boton-agregar">
             <a href="{% url 'subir_documento' %}" class="btn-agregar">
@@ -41,28 +58,22 @@
 
         <section class="listado-documentos">
             <h2>Documentos Disponibles</h2>
+
             <div class="contenedor-documentos">
+                {% for doc in documentos %}
                 <div class="documento">
                     <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
-                    <h3>Contrato de Renta</h3>
-                    <p>Ubicación: Ciudad de México</p>
-                    <p>Tipo: Contrato</p>
-                    <a href="{% static 'documentos/contrato_renta.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
+                    <h3>{{ doc.nombre }}</h3>
+                    <p>Ubicación: {{ doc.get_ubicacion_display }}</p>
+                    <p>Tipo: {{ doc.get_tipo_display }}</p>
+                    <p>Subido: {{ doc.fecha_subida|date:"d/m/Y H:i" }}</p>
+                    <a href="{{ doc.documento.url }}" class="btn-descargar" download>
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
                 </div>
-                <div class="documento">
-                    <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
-                    <h3>Escritura Casa</h3>
-                    <p>Ubicación: Guadalajara</p>
-                    <p>Tipo: Escritura</p>
-                    <a href="{% static 'documentos/escritura_casa.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
-                </div>
-                <div class="documento">
-                    <img src="{% static 'imagenes/pdf-icon.png' %}" alt="Documento PDF">
-                    <h3>Contrato de Venta</h3>
-                    <p>Ubicación: Monterrey</p>
-                    <p>Tipo: Contrato</p>
-                    <a href="{% static 'documentos/contrato_venta.pdf' %}" class="btn-descargar" download><i class="fas fa-download"></i> Descargar</a>
-                </div>
+                {% empty %}
+                <p>No hay documentos disponibles.</p>
+                {% endfor %}
             </div>
         </section>
     </main>
