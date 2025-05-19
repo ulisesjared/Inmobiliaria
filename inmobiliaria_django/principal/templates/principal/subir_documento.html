@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="{% static 'estilos/subir_documento.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('enviado') === '1') {
+        alert("Documento subido exitosamente.");
+        window.history.replaceState(null, null, window.location.pathname);
+    }
+</script>
+
 <body>
 
     <!-- Navbar fija -->

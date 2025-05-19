@@ -18,7 +18,6 @@
             <h2>Solicitudes de Contacto</h2>
             <p>Aquí se muestran todas las peticiones de los clientes.</p>
 
-            <!-- Tabla de clientes -->
             <table class="tabla-clientes">
                 <thead>
                     <tr>
@@ -26,44 +25,34 @@
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Teléfono</th>
-                        <th>Mensaje</th>
+                        <th>Interés</th>
+                        <th>Contacto</th>
+                        <th>Comentarios</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for contacto in contactos %}
                     <tr>
-                        <td>1</td>
-                        <td>Juan Pérez</td>
-                        <td>juanperez@email.com</td>
-                        <td>442-123-4567</td>
-                        <td>Estoy interesado en una casa en CDMX.</td>
+                        <td>{{ contacto.id }}</td>
+                        <td>{{ contacto.nombre }}</td>
+                        <td>{{ contacto.correo_electronico }}</td>
+                        <td>{{ contacto.telefono }}</td>
+                        <td>{{ contacto.get_me_interesa_display }}</td>
+                        <td>{{ contacto.get_como_contactar_display }}</td>
+                        <td>{{ contacto.comentarios|default:"(sin comentarios)" }}</td>
                         <td>
-                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
-                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                            <form action="{% url 'eliminar_contacto' contacto.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="btn-eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar este contacto?')">
+                                     <i class="fas fa-trash"></i> Eliminar
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>María López</td>
-                        <td>marialopez@email.com</td>
-                        <td>331-456-7890</td>
-                        <td>Quisiera más información sobre terrenos en Guadalajara.</td>
-                        <td>
-                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
-                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Pedro García</td>
-                        <td>pedrogarcia@email.com</td>
-                        <td>818-555-6677</td>
-                        <td>Estoy buscando un departamento en Monterrey.</td>
-                        <td>
-                            <button class="btn-ver"><i class="fas fa-eye"></i> Ver</button>
-                            <button class="btn-eliminar"><i class="fas fa-trash"></i> Eliminar</button>
-                        </td>
-                    </tr>
+                    {% empty %}
+                    <tr><td colspan="8">No hay solicitudes de contacto registradas.</td></tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
@@ -72,6 +61,6 @@
     <footer>
         <p>&copy; 2025 Inmobiliaria Uriangato. Todos los derechos reservados.</p>
     </footer>
-    
+
 </body>
 </html>

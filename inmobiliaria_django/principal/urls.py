@@ -20,5 +20,6 @@ urlpatterns = [
     path('editar-propiedad/<int:propiedad_id>/', views.editar_propiedad, name='editar_propiedad'),
     path('eliminar-propiedad/<int:propiedad_id>/', views.eliminar_propiedad, name='eliminar_propiedad'),
     path('propiedades-public/', views.propiedades_public, name='propiedades_public'),
+    path('eliminar-contacto/<int:contacto_id>/', views.eliminar_contacto, name='eliminar_contacto'),
 
 ]

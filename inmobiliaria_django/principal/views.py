@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Propiedad
+from .models import Propiedad,Contacto,Documento
 from .forms import PropiedadForm
+from .forms import ContactoForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -10,8 +11,18 @@ from django.contrib.auth.models import User
 def index(request):
     return render(request, 'principal/index.html')
 
+
 def contacto(request):
-    return render(request, 'principal/contacto.html')
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/contacto/?enviado=1')  # 👈 redirige con bandera
+    else:
+        form = ContactoForm()
+    return render(request, 'principal/contacto.html', {'form': form})
+
+
 
 def propiedades(request):
     return render(request, 'principal/propiedades.html')
@@ -36,12 +47,27 @@ def agregar_propiedad(request):
     return render(request, 'principal/agregar_propiedad.html', {'form': form})
 
 def clientes(request):
-    return render(request, 'principal/clientes.html')
+    contactos = Contacto.objects.all().order_by('-id')
+    return render(request, 'principal/clientes.html', {'contactos': contactos})
 
 def documentos(request):
     return render(request, 'principal/documentos.html')
 
 def subir_documento(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        ubicacion = request.POST.get('ubicacion')
+        tipo = request.POST.get('tipo')
+        archivo = request.FILES.get('documento')
+
+        if nombre and ubicacion and tipo and archivo:
+            Documento.objects.create(
+                nombre=nombre,
+                ubicacion=ubicacion,
+                tipo=tipo,
+                documento=archivo
+            )
+            return redirect('/subir_documento/?enviado=1')
     return render(request, 'principal/subir_documento.html')
 
 def registro(request):
@@ -153,3 +179,10 @@ def register_view(request):
 def logout_view(request):
     logout(request)
     return redirect('index')
+
+
+def eliminar_contacto(request, contacto_id):
+    contacto = get_object_or_404(Contacto, id=contacto_id)
+    contacto.delete()
+    messages.success(request, 'Contacto eliminado correctamente.')
+    return redirect('clientes')  

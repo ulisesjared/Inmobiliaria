@@ -24,48 +24,9 @@
             <h2>Estamos listos para ayudarte</h2>
             <p>Te agradecemos el interés en Inmobiliaria Uriangato. Nos encantará atenderte y resolver cualquier duda.</p>
             
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="nombre">Nombre <span>*</span></label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Correo electrónico <span>*</span></label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono <span>*</span></label>
-                        <input type="tel" id="telefono" name="telefono" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="interes">Me interesa:</label>
-                    <select id="interes" name="interes">
-                        <option value="" selected>Selecciona una opción</option>
-                        <option value="compra">Compra de propiedad</option>
-                        <option value="renta">Renta de propiedad</option>
-                        <option value="asesoria">Asesoría financiera</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="contacto">¿Cómo deseas ser contactado?</label>
-                    <select id="contacto" name="contacto">
-                        <option value="" selected>Selecciona una opción</option>
-                        <option value="telefono">Teléfono</option>
-                        <option value="email">Correo Electrónico</option>
-                        <option value="whatsapp">WhatsApp</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="mensaje">Comentarios</label>
-                    <textarea id="mensaje" name="mensaje"></textarea>
-                </div>
-
+            <form method="POST" action="{% url 'contacto' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
                 <button type="submit" class="btn-enviar">Enviar</button>
             </form>
         </div>
@@ -122,8 +83,17 @@
                 <div id="resultadoHipoteca"></div>
             </div>
         </div>
-    
+        
         <script src="{% static 'js/main.js' %}"></script>
+        <script>
+           
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('enviado') === '1') {
+                alert('✅ ¡Gracias! Tu mensaje fue enviado exitosamente. Pronto nos pondremos en contacto contigo.');
+                
+                window.history.replaceState(null, null, window.location.pathname);
+            }
+        </script>
 
 </body>
 </html>

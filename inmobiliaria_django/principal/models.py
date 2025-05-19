@@ -48,3 +48,30 @@ class Contacto(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.correo_electronico})"
+    
+
+    from django.db import models
+
+class Documento(models.Model):
+    UBICACIONES = [
+        ('cdmx', 'Ciudad de México'),
+        ('guadalajara', 'Guadalajara'),
+        ('monterrey', 'Monterrey'),
+        ('queretaro', 'Querétaro'),
+        ('puebla', 'Puebla'),
+        ('otro', 'Otra'),
+    ]
+
+    TIPOS_DOCUMENTO = [
+        ('contrato', 'Contrato'),
+        ('escritura', 'Escritura'),
+    ]
+
+    nombre = models.CharField(max_length=255)
+    documento = models.FileField(upload_to='documentos/')  # Se guarda en MEDIA_ROOT/documentos/
+    ubicacion = models.CharField(max_length=20, choices=UBICACIONES)
+    tipo = models.CharField(max_length=20, choices=TIPOS_DOCUMENTO)
+    fecha_subida = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre} ({self.get_tipo_display()})"
